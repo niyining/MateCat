@@ -74,6 +74,7 @@ $(document).ready(function() {
 				lexiqa				        : !!( $("#lexi_qa").prop("checked") && !$("#lexi_qa").prop("disabled") ),
 				speech2text         		: !!( $("#s2t_check").prop("checked") && !$("#s2t_check").prop("disabled") ),
 				tag_projection			    : !!( $("#tagp_check").prop("checked") && !$("#tagp_check").prop("disabled") ),
+				autoedit				    : $("#autoedit_check").prop("checked") ,
 				segmentation_rule			: $( '#segm_rule' ).val()
 			},
 			beforeSend: function (){
@@ -238,6 +239,7 @@ $(document).ready(function() {
     APP.checkForLexiQALangs();
     APP.checkForTagProjectionLangs();
 	APP.checkForSpeechToText();
+	APP.checkAutoeditOption();
     $("#source-lang").on('change', function(){
 		APP.checkForLexiQALangs();
 		APP.checkForTagProjectionLangs();
@@ -513,4 +515,9 @@ APP.checkForSpeechToText = function(){
 		speech2textCheck.addClass('option-unavailable');
 	}
 	$('.options-box #s2t_check').attr('checked', !disableS2T);
+};
+
+APP.checkAutoeditOption = function () {
+	var defaultValue  = config.defaults.autoedit;
+	$('.autoedit-box #autoedit_check').attr('checked', defaultValue);
 };

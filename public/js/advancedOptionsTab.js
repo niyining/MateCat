@@ -10,6 +10,7 @@ if ( true )
             var lexiqaCheck = $('.qa-box #lexi_qa');
             var speech2textCheck = $('.s2t-box #s2t_check');
             var tagProjectionCheck = $('.tagp #tagp_check');
+            var autoeditCheck = $('.autoedit-box #autoedit_check');
 
 
 
@@ -85,6 +86,11 @@ if ( true )
                 speech2textCheck.on('change', this.toggleSpeech2TextOption.bind(this));
                 (Speech2Text.enabled()) ? speech2textCheck.attr('checked', true) : speech2textCheck.attr('checked', false);
             }
+
+            //Autoedit
+            autoeditCheck.on('change', this.toggleAutoeditOption.bind(this));
+            var autoeditchecked = (config.autoedit_enabled == 1 );
+            autoeditCheck.attr('checked', autoeditchecked);
         },
 
         toggleLexiqaOption: function () {
@@ -100,6 +106,28 @@ if ( true )
         toggleTagProjectionOption: function () {
             var selected = $('.tagp #tagp_check').is(':checked');
             (selected) ? UI.enableTagProjectionInJob() : UI.disableTagProjectionInJob();
+        },
+        toggleAutoeditOption: function () {
+            var selected = $('.autoedit-box #autoedit_check').is(':checked');
+            if (selected) {
+                config.autoedit_enabled = 1;
+            } else {
+                config.autoedit_enabled = 0;
+            }
+            var path = sprintf(
+                '/api/v2/jobs/%s/%s/options',
+                config.id_job, config.password
+            );
+            var data = {
+                'autoedit': selected
+            };
+            $.ajax({
+                url: path,
+                type: 'POST',
+                data : data
+            }).done( function( data ) {
+                UI.render();
+            });
         }
 
     });

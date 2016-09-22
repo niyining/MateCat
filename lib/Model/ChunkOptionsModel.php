@@ -6,7 +6,7 @@ class ChunkOptionsModel {
     private $chunk ; 
     
     public static $valid_keys = array(
-        'speech2text', 'tag_projection', 'lexiqa'
+        'speech2text', 'tag_projection', 'lexiqa', 'autoedit'
     ); 
     
     private $received_options = array() ; 

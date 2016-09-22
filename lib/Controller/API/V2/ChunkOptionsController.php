@@ -34,6 +34,7 @@ class ChunkOptionsController extends ProtectedKleinController {
             'speech2text' => array( 'filter' => FILTER_VALIDATE_BOOLEAN ),
             'lexiqa' => array( 'filter' => FILTER_VALIDATE_BOOLEAN ),
             'tag_projection' => array( 'filter' => FILTER_VALIDATE_BOOLEAN ),
+            'autoedit' => array( 'filter' => FILTER_VALIDATE_BOOLEAN ),
         );
 
         $args = array_intersect_key( $args, $this->request->params() );
