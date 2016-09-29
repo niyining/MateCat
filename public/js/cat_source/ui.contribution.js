@@ -178,63 +178,59 @@ $.extend(UI, {
 		this.renderContributionErrors(d.errors, segment);
     },
 
-  renderContributions: function(d, segment) {
-    if(!d) return true;
+    renderContributions: function(d, segment) {
+        if(!d) return true;
 
-    var isActiveSegment = $(segment).hasClass('editor');
-    var editarea = $('.editarea', segment);
+        var isActiveSegment = $(segment).hasClass('editor');
+        var editarea = $('.editarea', segment);
+        var artificialIntelligenceLabel = "Artificial Intelligence";
+        if ( d.data.hasOwnProperty('matches') && d.data.matches.length) {
+            var editareaLength = editarea.text().trim().length;
 
-    if ( d.data.hasOwnProperty('matches') && d.data.matches.length) {
-      var editareaLength = editarea.text().trim().length;
-      if (isActiveSegment) {
-        editarea.removeClass("indent");
-      } else {
-        if (editareaLength === 0)
-          editarea.addClass("indent");
-      }
-      var translation = d.data.matches[0].translation;
-      var perc_t = $(".percentuage", segment).attr("title");
+            if (isActiveSegment) {
+                editarea.removeClass("indent");
+            } else {
+                if (editareaLength === 0)
+                  editarea.addClass("indent");
+            }
+            var translation = d.data.matches[0].translation;
+            var perc_t = $(".percentuage", segment).attr("title");
 
-      $(".percentuage", segment).attr("title", '' + perc_t + "Created by " + d.data.matches[0].created_by);
-      var match = d.data.matches[0].match;
+            $(".percentuage", segment).attr("title", '' + perc_t + "Created by " + d.data.matches[0].created_by);
+            var match = d.data.matches[0].match;
 
-      var segment_id = segment.attr('id');
-      $(segment).addClass('loaded');
-      $('.sub-editor.matches .overflow', segment).empty();
+            var segment_id = segment.attr('id');
+            $(segment).addClass('loaded');
+            $('.sub-editor.matches .overflow', segment).empty();
 
-      $.each(d.data.matches, function(index) {
+            $.each(d.data.matches, function(index) {
 
-        if ((this.segment === '') || (this.translation === '')) return;
+                if ((this.segment === '') || (this.translation === '')) return;
 
-        var disabled = (this.id == '0') ? true : false;
-        cb = this.created_by;
+                var disabled = (this.id == '0') ? true : false;
+                var cb = this.created_by;
+                var isArtificialIntelligence = (cb == artificialIntelligenceLabel);
+                if ("sentence_confidence" in this &&
+                    (
+                        this.sentence_confidence !== "" &&
+                        this.sentence_confidence !== 0 &&
+                        this.sentence_confidence != "0" &&
+                        this.sentence_confidence !== null &&
+                        this.sentence_confidence !== false &&
+                        typeof this.sentence_confidence != 'undefined'
+                        )
+                    ) {
+                        suggestion_info = "Quality: <b>" + this.sentence_confidence + "</b>";
+                    } else if (this.match == 'MT+' || isArtificialIntelligence) {
+                        suggestion_info = '';
+                    } else if (this.match != 'MT') {
+                        suggestion_info = this.last_update_date;
+                    } else {
+                        suggestion_info = '';
+                }
 
-        if ("sentence_confidence" in this &&
-            (
-                this.sentence_confidence !== "" &&
-                this.sentence_confidence !== 0 &&
-                this.sentence_confidence != "0" &&
-                this.sentence_confidence !== null &&
-                this.sentence_confidence !== false &&
-                typeof this.sentence_confidence != 'undefined'
-                )
-            ) {
-                suggestion_info = "Quality: <b>" + this.sentence_confidence + "</b>";
-            } else if (this.match != 'MT') {
-          suggestion_info = this.last_update_date;
-        } else {
-          suggestion_info = '';
-        }
-
-
-        if (typeof d.data.fieldTest == 'undefined') {
-            percentClass = UI.getPercentuageClass(this.match);
-            percentText = this.match;
-        } else {
-            quality = parseInt(this.quality);
-            percentClass = (quality > 98)? 'per-green' : (quality == 98)? 'per-red' : 'per-gray';
-            percentText = 'MT';
-        }
+                percentClass = UI.getPercentuageClass(this.match, isArtificialIntelligence);
+                percentText = this.match;
 
 				if (!$('.sub-editor.matches', segment).length) {
 					UI.createFooter(segment);
@@ -244,28 +240,33 @@ $.extend(UI, {
                 //
                 suggestionDecodedHtml = UI.decodePlaceholdersToText(this.segment, true, segment_id, 'contribution source');
 				translationDecodedHtml = UI.decodePlaceholdersToText( this.translation, true, segment_id, 'contribution translation' );
+                if ( isArtificialIntelligence ) {
+                    cb = '<span class="footer-ai-span" style="color: #09beec">' + cb + '</span>'
+                }
 
-		  		//If Tag Projection is enable I take out the tags from the contributions
-				// if (UI.currentSegmentTPEnabled) {
-				// 	suggestionDecodedHtml = UI.removeAllTags(suggestionDecodedHtml);
-				// 	translationDecodedHtml = UI.removeAllTags(translationDecodedHtml);
-				// }
-
-                var toAppend = $('<ul class="suggestion-item graysmall" data-item="' + (index + 1) + '" data-id="' +
-					this.id + '"><li class="sugg-source" >' + ((disabled) ? '' : ' <a id="' + segment_id +
-					'-tm-' + this.id + '-delete" href="#" class="trash" title="delete this row"></a>') +
-					'<span id="' + segment_id + '-tm-' + this.id + '-source" class="suggestion_source">' +
-					suggestionDecodedHtml + '</span></li><li class="b sugg-target"><!-- span class="switch-editing">Edit</span -->' +
-					'<span class="graysmall-message">' + UI.suggestionShortcutLabel + (index + 1) +
-					'</span><span id="' + segment_id + '-tm-' + this.id + '-translation" class="translation">' +
-					translationDecodedHtml +
-					'</span></li><ul class="graysmall-details"><li class="percent ' + percentClass + '">' +
-					percentText + '</li><li>' + suggestion_info + '</li><li class="graydesc">Source: <span class="bold">' +
-					cb + '</span></li></ul></ul>');
+                var toAppend = $('<ul class="suggestion-item graysmall" data-item="' + (index + 1) + '" data-id="' + this.id + '">' +
+                        '<li class="sugg-source" >' + ((disabled) ? '' : ' ' +
+                            '<a id="' + segment_id + '-tm-' + this.id + '-delete" href="#" class="trash" title="delete this row"></a>') +
+                            '<span id="' + segment_id + '-tm-' + this.id + '-source" class="suggestion_source">' + suggestionDecodedHtml + '</span>' +
+                        '</li>' +
+                        '<li class="b sugg-target">' +
+					        '<span class="graysmall-message">' + UI.suggestionShortcutLabel + (index + 1) + '</span>' +
+                            '<span id="' + segment_id + '-tm-' + this.id + '-translation" class="translation">' + translationDecodedHtml + '</span>' +
+                        '</li>' +
+                        '<ul class="graysmall-details '+ ((isArtificialIntelligence) ? 'graysmall-details-ai': '') +'">' +
+                            '<li class="percent ' + percentClass + '">' + percentText + '</li>' +
+                            '<li>' + suggestion_info + '</li>' +
+                            '<li class="graydesc">Source: <span class="bold">' + cb + '</span></li>' +
+                        '</ul>' +
+                    '</ul>');
 
                 toAppend.find('li:first').data('original', this.segment);
+                //Tooltip for Artificial Intelligence contribution
+                var text = '<div style="text-align:left;font-size: 15px;">Generated by MateCat autoediting the best match. </br>The best match (old_match) is now a '+percentText+'.</div>';
+                UI.setTooltip(toAppend.find('.graysmall-details-ai'), text);
 
                 $('.sub-editor.matches .overflow', segment).append( toAppend );
+
 
 			});
 

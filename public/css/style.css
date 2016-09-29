@@ -2242,7 +2242,7 @@ body.rtl-target .editor .editarea span
 .graysmall .graysmall-details
 {
 	display: block;
-	width: 30%;
+	width: auto;
 	position: absolute;
 	bottom:0;
 	right:0;
@@ -2261,7 +2261,8 @@ body.rtl-target .editor .editarea span
 	background: #999;
 }
 
-.graysmall:hover li span{color:#000 !important}
+.graysmall:hover li span{color:#000}
+.graysmall:hover li span.footer-ai-span{color:#09beec}
 
 .sub-editor.glossary .glossary-item
 {

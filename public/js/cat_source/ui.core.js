@@ -942,7 +942,7 @@ UI = {
 			this.nextSegmentId = 0;
 		}
     },
-	getPercentuageClass: function(match) {
+	getPercentuageClass: function(match, isIA) {
 		var percentageClass = "";
 		var m_parse = parseInt(match);
 
@@ -951,7 +951,10 @@ UI = {
 		}
 
 		switch (true) {
-			case (match == 100):
+			case (match == 100 && isIA):
+				percentageClass = "per-blue";
+				break;
+            case (match == 100):
 				percentageClass = "per-green";
 				break;
 			case (match == 101):
@@ -962,6 +965,9 @@ UI = {
 				break;
 			case (match == "MT"):
 				percentageClass = "per-yellow";
+				break;
+            case (match == "MT+"):
+				percentageClass = "per-blue";
 				break;
 			default :
 				percentageClass = "";
@@ -3683,6 +3689,15 @@ UI = {
         $('.mgmt-panel-tm .nav-tabs .mgmt-' + tab).click();
         $.cookie('tmpanel-open', 1, { path: '/' });
     },
+    setTooltip: function (elem, text) {
+        elem.data("powertip", text);
+        elem.powerTip({
+            placement : 's',
+            popupId : "matecatTip",
+            mouseOnToPopup: true
+
+        });
+    }
 
 
 };
