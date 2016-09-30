@@ -179,6 +179,9 @@ class getContributionController extends ajaxController {
             $config[ 'num_result' ]    = $this->num_results;
             $config[ 'isConcordance' ] = $this->concordance_search;
 
+            //Cast jobData to struct
+            $chunk_options_model = new ChunkOptionsModel( new Chunks_ChunkStruct( $this->jobData ) ) ;
+            $config[ 'ape' ]           = $chunk_options_model->isEnabled( 'autoedit' );
 
             //get job's TM keys
             $this->checkLogin();

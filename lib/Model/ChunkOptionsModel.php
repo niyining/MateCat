@@ -13,7 +13,9 @@ class ChunkOptionsModel {
     
     public function __construct( Chunks_ChunkStruct $chunk) {
         $this->chunk = $chunk ;
-        $this->project_metadata = $chunk->getProject()->getMetadataAsKeyValue(); 
+        $projStruct = new Projects_ProjectStruct();
+        $projStruct->id = $this->chunk->id_project;
+        $this->project_metadata = $projStruct->getMetadataAsKeyValue();
     }
     
     public function isEnabled($key) {
@@ -52,7 +54,10 @@ class ChunkOptionsModel {
             $dao->set($this->chunk->id_project, Projects_MetadataDao::buildChunkKey($key, $this->chunk), $value);
         }
 
-        $this->project_metadata = $this->chunk->getProject()->getMetadataAsKeyValue(); 
+        $projStruct = new Projects_ProjectStruct();
+        $projStruct->id = $this->chunk->id_project;
+        $this->project_metadata = $projStruct->getMetadataAsKeyValue();
+
     }
     
     public function toArray() {

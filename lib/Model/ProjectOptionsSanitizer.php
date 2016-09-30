@@ -8,7 +8,7 @@ class ProjectOptionsSanitizer {
     private $source_lang ; 
     private $target_lang ;
 
-    private $boolean_keys = array('speech2text', 'lexiqa', 'tag_projection');
+    private $boolean_keys = array('speech2text', 'lexiqa', 'tag_projection', 'autoedit');
 
     public static $lexiQA_allowed_languages = array(
         'en-US',
@@ -63,6 +63,10 @@ class ProjectOptionsSanitizer {
             $this->sanitizeLexiQA();
         }
 
+        if( isset( $this->options['autoedit'] ) ){
+            $this->sanitizeAutoEdit();
+        }
+
         $this->sanitizeSegmentationRule();
 
         $this->convertBooleansToInt();
@@ -99,6 +103,10 @@ class ProjectOptionsSanitizer {
         } else {
             $this->sanitized['lexiqa'] = FALSE;
         }
+    }
+
+    private function sanitizeAutoEdit(){
+        $this->sanitized['autoedit'] = !!$this->options['autoedit'] ;
     }
 
     /**

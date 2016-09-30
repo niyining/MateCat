@@ -23,6 +23,7 @@ class Engines_MyMemory extends Engines_AbstractEngine implements Engines_EngineI
             'mt_only'       => false,
             'isConcordance' => false,
             'isGlossary'    => false,
+            'ape'           => false
     );
 
     /**
@@ -110,6 +111,7 @@ class Engines_MyMemory extends Engines_AbstractEngine implements Engines_EngineI
         $parameters[ 'de' ]       = $_config[ 'email' ];
         $parameters[ 'mt' ]       = $_config[ 'get_mt' ];
         $parameters[ 'numres' ]   = $_config[ 'num_result' ];
+        $parameters[ 'ape' ]      = $_config[ 'ape' ];
 
         ( $_config[ 'isConcordance' ] ? $parameters[ 'conc' ] = 'true' : null );
         ( $_config[ 'isConcordance' ] ? $parameters[ 'extended' ] = '1' : null );

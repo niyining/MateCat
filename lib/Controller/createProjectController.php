@@ -53,6 +53,7 @@ class createProjectController extends ajaxController {
                 ),
                 'lexiqa'             => array( 'filter' => FILTER_VALIDATE_BOOLEAN ),
                 'speech2text'        => array( 'filter' => FILTER_VALIDATE_BOOLEAN ),
+                'autoedit'           => array( 'filter' => FILTER_VALIDATE_BOOLEAN ),
                 'tag_projection'     => array( 'filter' => FILTER_VALIDATE_BOOLEAN ),
                 'segmentation_rule'  => array(
                         'filter' => FILTER_SANITIZE_STRING, 'flags' => FILTER_FLAG_STRIP_LOW | FILTER_FLAG_STRIP_HIGH
@@ -363,16 +364,17 @@ class createProjectController extends ajaxController {
         return $elem->toArray();
 
     }
-    
+
     private function setMetadataFromPostInput( $__postInput ) {
         $options = array() ;
 
-        if ( isset( $__postInput['lexiqa']) )           $options['lexiqa'] = $__postInput[ 'lexiqa' ];
-        if ( isset( $__postInput['speech2text']) )      $options['speech2text'] = $__postInput[ 'speech2text' ];
-        if ( isset( $__postInput['tag_projection']) )   $options['tag_projection'] = $__postInput[ 'tag_projection' ];
+        if ( isset( $__postInput['lexiqa']) )            $options['lexiqa'] = $__postInput[ 'lexiqa' ];
+        if ( isset( $__postInput['speech2text']) )       $options['speech2text'] = $__postInput[ 'speech2text' ];
+        if ( isset( $__postInput['tag_projection']) )    $options['tag_projection'] = $__postInput[ 'tag_projection' ];
+        if ( isset( $__postInput['autoedit']) )          $options['autoedit'] = $__postInput[ 'autoedit' ];
         if ( isset( $__postInput['segmentation_rule']) ) $options['segmentation_rule'] = $__postInput[ 'segmentation_rule' ];
 
-        $this->metadata = $options ; 
+        $this->metadata = $options ;
     }
 
     private function __validateUserMTEngine() {
