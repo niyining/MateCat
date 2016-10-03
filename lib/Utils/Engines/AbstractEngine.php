@@ -206,10 +206,7 @@ abstract class Engines_AbstractEngine {
         }
 
         $rawValue = $this->_call( $url, $curl_opt );
-
-        //XXX HACK APE!
-//        $rawValue = file_get_contents( "/var/www/matecat/mymemory_ape_response.json" );
-
+        
         /*
          * $parameters['segment'] is used in MT engines,
          * they does not return original segment, only the translation.
