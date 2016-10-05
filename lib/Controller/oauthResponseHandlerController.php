@@ -13,7 +13,7 @@ class oauthResponseHandlerController extends viewController{
 	private $oauthTokenEncryption;
 
 	public function __construct(){
-
+		error_log(print_r("aaaaaaaaaaaaa", TRUE));
         //SESSION ENABLED
         parent::sessionStart();
 		parent::__construct();
@@ -68,7 +68,7 @@ class oauthResponseHandlerController extends viewController{
 	}
 
 	public function doAction(){
-
+		trigger_error("My error222");
 		if($this->user_logged && !empty($this->userData)){
 			//user has been validated, data was by Google
 			//check if user exists in db; if not, create

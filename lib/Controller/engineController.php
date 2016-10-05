@@ -142,6 +142,20 @@ class engineController extends ajaxController {
 
                 break;
 
+            case strtolower( Constants_Engines::ATMAN ):
+
+                /**
+                 * Create a record of type Moses
+                 */
+                $newEngine = EnginesModel_AtmanStruct::getStruct();
+
+                $newEngine->name                                = $this->name;
+                $newEngine->uid                                 = $this->uid;
+                $newEngine->type                                = Constants_Engines::MT;
+                $newEngine->base_url                            = $this->engineData[ 'url' ];
+
+                break;
+
             case strtolower( Constants_Engines::IP_TRANSLATOR ):
 
                 /**

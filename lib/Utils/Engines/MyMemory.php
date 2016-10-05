@@ -621,7 +621,9 @@ class Engines_MyMemory extends Engines_AbstractEngine implements Engines_EngineI
         $parameters[ 'segs' ] = $json_segs;
 
         $this->_setAdditionalCurlParams( array(
-                        CURLOPT_TIMEOUT    => 300
+                        CURLOPT_TIMEOUT    => 30,
+                        CURLOPT_PROXY      => '192.168.1.140:1080',
+                        CURLOPT_PROXYTYPE  => CURLPROXY_SOCKS5
                 )
         );
 

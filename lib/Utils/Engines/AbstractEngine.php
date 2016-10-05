@@ -201,7 +201,7 @@ abstract class Engines_AbstractEngine {
             $url .= http_build_query( $parameters );
             $curl_opt = array(
                     CURLOPT_HTTPGET => true,
-                    CURLOPT_TIMEOUT => 10
+                    CURLOPT_TIMEOUT => 300
             );
         }
 

@@ -33,3 +33,4 @@ screen -d -m -S fast php FastAnalysis.php ../../../inc/task_manager_config.ini
 screen -d -m -S tm php TmAnalysis.php ../../../inc/task_manager_config.ini
 
 exit 0;
+
