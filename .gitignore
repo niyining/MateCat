@@ -43,8 +43,8 @@ task_manager_config.ini
 test-storage
 
 # composer files
-composer.phar
-vendor
+#composer.phar
+#vendor
 
 .env
 
