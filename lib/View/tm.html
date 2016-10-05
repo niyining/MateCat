@@ -241,6 +241,7 @@
                                        
                                         <select name="mt_engine" id="mt_engine_int">
                                                 <option value="none" selected="">Choose provider...</option>
+                                                <option value="atman">Atman</option>
                                                 <option value="altlang">AltLang</option>
                                                 <option value="apertium">Apertium</option>
                                                 <option value="deeplingo" >DeepLingo</option>
@@ -495,6 +496,7 @@
     <div metal:use-macro="mt_engines.html/template-apertium" />
     <div metal:use-macro="mt_engines.html/template-altlang" />
     <div metal:use-macro="mt_engines.html/template-smartmate" />
+    <div metal:use-macro="mt_engines.html/template-atman" />
 
 </div>
 

@@ -604,3 +604,29 @@
     </template>
     <!-- fine blocco altlang -->
 </div>
+
+<div metal:define-macro="template-atman">
+    <!-- inizio blocco atman -->
+    <template id="mt-provider-atman-fields">
+        <p>Fill out the form with the connection data to your own Atman MT system.</p>
+        <p class="required pull-left"><sup>*</sup> Required fields.</p>
+        <br class="clear" />
+        <span class="mt-error-key">Error message</span>
+        <br class="clear" />
+        <label for="new-engine-name">Engine name<sup>*</sup></label>
+        <input class="required" id="new-engine-name" placeholder="here" />
+        <br class="clear" />
+        <div class="provider-data">
+            <div class="provider-field">
+                <label>URL<sup>*</sup></label>
+                <input class="required" data-field-name="url" placeholder="here" />
+                <br class="clear" />
+            </div>
+        </div>
+    </template>
+    <template id="mt-provider-atman-msg">
+        <p>Atman Machine Translation</p>
+        <a href="mailto:corp@atman360.com" class="continuebtn btn-ok">Contact MateCat</a>
+    </template>
+    <!-- fine blocco atman -->
+</div>
