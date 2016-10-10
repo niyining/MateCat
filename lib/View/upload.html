@@ -30,6 +30,7 @@
 
     <link rel="stylesheet" href="${basepath}public/css/upload-build.css?build=${build_number}"/>
     <link rel="stylesheet" href="${basepath}public/js/lib/colorbox/colorbox.css?build=${build_number}"/>
+    <link rel="icon" href="${basepath}public/img/favicon.ico?v=<?php echo md5_file('favicon.ico') ?>" />
 
     <!-- Shim to make HTML5 elements usable in older Internet Explorer versions -->
     <!--[if lt IE 9]>
@@ -89,7 +90,7 @@
 <header>
     <div class="wrapper">
         <a href="${basepath}" class="logo"></a>
-        <ul class="pull-right" id="menu-site">
+        <!--<ul class="pull-right" id="menu-site">
             <li><a href="https://www.matecat.com/benefits/">Benefits</a></li>
             <li><a href="https://www.matecat.com/outsourcing/">Outsource</a></li>
             <li><a href="https://www.matecat.com/support-plans/">Plans</a></li>
@@ -97,18 +98,18 @@
             <li><a href="https://www.matecat.com/faq/">FAQ</a></li>
             <li><a href="https://www.matecat.com/support/">Support</a></li>
             <li><a class="bigred" href="https://www.matecat.com/webinar" target="_blank">Webinar</a></li>
-        </ul>
+        </ul>-->
     </div>
     <div class="cl"></div>
 </header>
 
 
 <div class="wrapper-claim">
-    <h1 tal:condition="true:conversion_enabled">Join the Evolution</h1>
+    <h1 tal:condition="true:conversion_enabled">Atman在线翻译</h1>
 
-    <h1 tal:condition="not:conversion_enabled">Join the Evolution</h1>
+    <h1 tal:condition="not:conversion_enabled">Atman在线翻译</h1>
 
-    <h2 class="payoff">The CAT tool that works for you</h2>
+    <h2 class="payoff">聪明的翻译系统</h2>
 </div>
 <div class="wrapper-upload">
 
@@ -168,7 +169,7 @@
 
     </select>
     <br/>
-     <a href="#" id="multiple-link">Multiple languages?</a>
+     <!--<a href="#" id="multiple-link">Multiple languages?</a>-->
 </div>
 
 <div class="translate-box subject">
@@ -176,42 +177,9 @@
     <select name="subject" id="subject">
         <option value="general">General</option>
         <option disabled="disabled" value="----">----</option>
-        <option value="accounting_finance">Accounting &amp; Finance</option>
-        <option value="aerospace_defence">Aerospace / Defence</option>
-        <option value="architecture">Architecture</option>
-        <option value="art">Art</option>
-        <option value="automotive">Automotive</option>
-        <option value="certificates_diplomas_licences_cv_etc">Certificates, diplomas, licences, cv's, etc</option>
-        <option value="chemical">Chemical</option>
-        <option value="civil_engineering_construction">Civil Engineering / Construction</option>
-        <option value="corporate_social_responsibility">Corporate Social Responsibility</option>
-        <option value="cosmetics">Cosmetics</option>
-        <option value="culinary">Culinary</option>
-        <option value="electronics_electrical_engineering">Electronics /  Electrical Engineering</option>
-        <option value="energy_power_generation_oil_gas">Energy / Power generation / Oil &amp; Gas</option>
-        <option value="environment">Environment</option>
-        <option value="fashion">Fashion</option>
-        <option value="games_viseogames_casino">Games / Video Games / Casino</option>
-        <option value="general_business_commerce">General Business / Commerce</option>
-        <option value="history_archaeology">History / Archaeology</option>
+        <option value="accounting_finance">Finance</option>
+        <option value="media_politics">Politics</option>
         <option value="information_technology">Information Technology</option>
-        <option value="insurance">Insurance</option>
-        <option value="internet_e-commerce">Internet, e-commerce</option>
-        <option value="legal_documents_contracts">Legal documents / Contracts</option>
-        <option value="literary_translations">Literary Translations</option>
-        <option value="marketing_advertising_material_public_relations">Marketing &amp; Advertising material / Public Relations</option>
-        <option value="matematics_and_physics">Mathematics and Physics</option>
-        <option value="mechanical_manufacturing">Mechanical / Manufacturing</option>
-        <option value="media_journalism_publishing">Media / Journalism / Publishing</option>
-        <option value="medical_pharmaceutical">Medical / Pharmaceutical</option>
-        <option value="music">Music</option>
-        <option value="private_correspondence_letters">Private Correspondence, Letters</option>
-        <option value="religion">Religion</option>
-        <option value="science">Science</option>
-        <option value="shipping_sailing_maritime">Shipping / Sailing / Maritime</option>
-        <option value="social_science">Social Science</option>
-        <option value="telecommunications">Telecommunications</option>
-        <option value="travel_tourism">Travel &amp; Tourism</option>
     </select>
     <a href="#" class="more-options"><span>Settings</span></a>
     <h2 class="resources" style="display:none;"><span class="numResources">4</span> Resources selected</h2>
@@ -232,17 +200,15 @@
 
 <div metal:use-macro="upload_partials.html/gdrive_files"/>
 
-<p tal:condition="true:conversion_enabled" class="supported-files">MateCat supports
+<p tal:condition="true:conversion_enabled" class="supported-files">Supports
     <a class="supported-file-formats" href="#">${formats_number} file formats</a>
     <span style="float: right;">.</span>
     <tal:block tal:condition="php: Bootstrap::areOauthKeysPresent()">
-        <span class="gdrive-addlink-container">
+        <!--<span class="gdrive-addlink-container">
             and
             <a class="load-gdrive load-gdrive-disabled" href="#">Google Drive files</a>
             <span class="gdrive-icon"></span>
-            <!--<span class="btn-success min">or</span>
-            <span class="btn-success btn ">Add from Google Drive</span>-->
-        </span>
+        </span>-->
     </tal:block>
 
 </p>
@@ -920,12 +886,12 @@
 
     <div class="wrapper">
 
-        <ul class="external-links">
+        <!--<ul class="external-links">
             <li><a href="https://www.matecat.com/open-source/" target="_blank">Open source</a></li>
 
             <li><a tal:attributes="href string:${basepath}api/docs" target="_blank">API</a></li>
             <li><a href="https://www.matecat.com/terms" target="_blank">Terms</a></li>
-        </ul>
+        </ul>-->
 
         <nav tal:condition="php: Bootstrap::areOauthKeysPresent()">
 

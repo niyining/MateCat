@@ -182,7 +182,7 @@ class catController extends viewController {
         $data = getSegmentsInfo( $this->jid, $this->password );
 
         //retrieve job owner. It will be useful also if the job is archived or cancelled
-        $this->job_owner = ( $data[ 0 ][ 'job_owner' ] != "" ) ? $data[ 0 ][ 'job_owner' ] : "support@matecat.com";
+        $this->job_owner = ( $data[ 0 ][ 'job_owner' ] != "" ) ? $data[ 0 ][ 'job_owner' ] : "support@atman360.com";
 
         if ( $data[ 0 ][ 'status' ] == Constants_JobStatus::STATUS_CANCELLED ) {
             $this->job_cancelled = true;

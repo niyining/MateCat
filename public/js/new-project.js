@@ -47,6 +47,7 @@ $(document).ready(function() {
         if(!UI.allTMUploadsCompleted()) {
             return false;
         }
+		console.log('clicked, enter');
 		$('body').addClass('creating');
 		var files = '';
 		$('.upload-table tr:not(.failed) td.name, .gdrive-upload-table tr:not(.failed) td.name').each(function () {
@@ -56,6 +57,7 @@ $(document).ready(function() {
         tm_data = UI.extractTMdataFromTable();
 
         var filename = files.substr(7) ;
+		console.log('clicked, 1');
 
 		APP.doRequest({
 			data: {

@@ -102,7 +102,8 @@ class Langs_Languages {
         if ( strlen( $code ) < 5 ) {
             $code = self::$map_iso2rfc[ $code ];
         }
-
+        //error_log(print_r(self::$map_rfc2obj, TRUE));
+        //error_log(print_r($code, TRUE));
         return self::$map_rfc2obj[ $code ][ 'rtl' ];
     }
 

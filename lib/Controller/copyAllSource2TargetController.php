@@ -169,7 +169,7 @@ class copyAllSource2TargetController extends ajaxController {
     }
 
     private function setErrorMap() {
-        $generalOutputError = "Error while copying sources to targets. Please contact support@matecat.com";
+        $generalOutputError = "Error while copying sources to targets. Please contact support@atman360.com";
 
         self::$errorMap = array(
                 "-1" => array(

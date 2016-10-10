@@ -12,16 +12,16 @@ class ProjectOptionsSanitizer {
 
     public static $lexiQA_allowed_languages = array(
         'en-US',
-        'en-GB',
+        /*'en-GB',
         'fr-FR',
         'de-DE',
-        'it-IT'
+        'it-IT'*/
     );
     /**
      * All combinations of languages for Tag Ptojection
      */
     public static $tag_projection_allowed_languages = array(
-        'en-de' => 'English - German',
+        /*'en-de' => 'English - German',
         'en-es' => 'English - Spanish',
         'en-fr' => 'English - French',
         'en-it' => 'English - Italian',
@@ -30,7 +30,7 @@ class ProjectOptionsSanitizer {
         'de-it' => 'German - Italian',
         'de-fr' => 'German - French',
         'fr-it' => 'French - Italian',
-        'it-es' => 'Italian - Spanish'
+        'it-es' => 'Italian - Spanish'*/
     );
 
 

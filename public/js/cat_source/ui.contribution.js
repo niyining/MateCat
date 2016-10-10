@@ -320,7 +320,7 @@ $.extend(UI, {
       $(segment).addClass('loaded');
 
       if((config.mt_enabled)&&(!config.id_translator)) {
-                $('.sub-editor.matches .overflow', segment).append('<ul class="graysmall message"><li>No matches could be found for this segment. Please, contact <a href="mailto:support@matecat.com">support@matecat.com</a> if you think this is an error.</li></ul>');
+                $('.sub-editor.matches .overflow', segment).append('<ul class="graysmall message"><li>No matches could be found for this segment. Please, contact <a href="mailto:support@atman360.com">support@atman360.com</a> if you think this is an error.</li></ul>');
             } else {
                 $('.sub-editor.matches .overflow', segment).append('<ul class="graysmall message"><li>No match found for this segment</li></ul>');
             }
