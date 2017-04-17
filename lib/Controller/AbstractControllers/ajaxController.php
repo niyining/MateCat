@@ -97,13 +97,13 @@ abstract class ajaxController extends controller {
             $this->logged_user->uid = $_SESSION[ 'uid' ];
             $this->logged_user->email = $_SESSION[ 'cid' ];
 
-            $userDao = new Users_UserDao(Database::obtain());
-            $userObject = $userDao->setCacheTTL( 3600 )->read( $this->logged_user ); // one hour cache
+            //$userDao = new Users_UserDao(Database::obtain());
+            //$userObject = $userDao->setCacheTTL( 3600 )->read( $this->logged_user ); // one hour cache
 
             /**
              * @var $userObject Users_UserStruct
              */
-            $this->logged_user = $userObject[0];
+            $this->logged_user = new Users_UserStruct($_SESSION[ 'userData' ]);
         }
 
         $this->userIsLogged = ( isset( $_SESSION[ 'cid' ] ) && !empty( $_SESSION[ 'cid' ] ) );

@@ -898,24 +898,26 @@
             <ul>
 
                 <tal:block tal:condition="php: !empty(logged_user)">
-                    <li><a tal:attributes="href string:${basepath}manage/?new=1">Manage</a></li>
+                    <li><a tal:attributes="href string:${basepath}manage/?new=1">项目管理</a></li>
                 </tal:block>
 
                 <tal:block tal:condition="php: empty(logged_user)">
-                    <li><a href="${authURL}" class="authLink">Manage</a></li>
+                    <li><a href="${authURL}" class="authLink">项目管理</a></li>
                 </tal:block>
 
             </ul>
 
             <tal:block tal:condition="php: empty(logged_user)">
                 <div id='welcomebox'>
-                    <span>Anonymous</span> (<a id='loginlink' class="authLink" href="${authURL}">login</a>)
+                    <!--<span>Anonymous</span> (<a id='loginlink' class="authLink" href="${authURL}">login</a>)-->
+                    <span>匿名</span> (<a href="http://localhost:8080/ucenter/login?from=catemat">登录</a>)
+
                 </div>
             </tal:block>
 
             <tal:block tal:condition="php: !empty(logged_user)">
                 <div id='welcomebox' tal:attributes="title extended_user">
-                    <span tal:content='logged_user'></span> (<a id='logoutlink' href='#'>logout</a>)
+                    <span tal:content='logged_user'></span> (<a id='logoutlink' href='#'>退出</a>)
                 </div>
             </tal:block>
 
@@ -1015,8 +1017,9 @@
 
     APP.displayCurrentTargetLang();
 </script>
+<!--
 <script type="text/javascript" src="//apis.google.com/js/api.js?onload=onApiLoad"></script>
-
+-->
 <div metal:use-macro="common.html/footer_includes" />
 
 </body>

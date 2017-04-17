@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>登录中转</title>
+    <script src="/public/js/lib/jquery.js"></script>
+</head>
+<body>
+	<script type="text/javascript">
+		$(function(){
+			//获取用户信息
+	        $.ajax({
+	            type: "GET",
+	            url: "http://localhost:8080/ucenter/api/getuserbysid",
+	            data: {
+	            	sid: "${sid}"
+	            },
+	            dataType: "jsonp",
+	            success: function(data){
+	            	McLogin(data.data);
+	            }
+	        });
+	        //MateCat登录
+	        var McLogin = function(data){
+	        	//数据适配
+	        	var mdata = {
+	        		uid: data._id,
+	        		first_name: data.full_name,
+	        		last_name: "",
+	        		email: data.email,
+	        		org: data.org
+	        	};
+		        $.ajax({
+		            type: "POST",
+		            url: "/?action=atmanLogin",
+		            data: mdata,
+		            dataType: "json",
+		            success: function(data){
+		            	console.log(data);
+		            	if(data.error == 0){
+		            		window.location.href = "/";
+		            	}
+		            }
+		        });
+	        }
+		});
+	</script>
+</body>
+</html>

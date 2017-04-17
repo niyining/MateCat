@@ -110,5 +110,4 @@ class oauthResponseHandlerController extends viewController{
 		$mail_res=mailer('Matecat Team','noreply@'.INIT::$HTTPHOST,$data['name'],$data['mail'],'Welcome to Matecat!',$message);
 	}
 }
-
 ?>

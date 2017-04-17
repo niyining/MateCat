@@ -19,7 +19,7 @@ class activityLogController extends viewController {
     /**
      * @var array
      */
-    public $jobLanguageDefinition = array();
+    public $jobLanguageDefinition = array();//two language or more
 
     /**
      * @var array
