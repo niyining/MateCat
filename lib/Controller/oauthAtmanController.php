@@ -1,6 +1,5 @@
 <?php
 class oauthAtmanController extends viewController{
-	private $incomingUrl;
 
 	public function __construct() {
 

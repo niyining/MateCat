@@ -1,5 +1,5 @@
 <?php
-
+header("Access-Control-Allow-Origin: *");
 class atmanLoginController extends ajaxController{
 
     private $userData = array();
@@ -26,7 +26,6 @@ class atmanLoginController extends ajaxController{
             $_SESSION[ 'uid' ] = $this->userData["uid"];
             $_SESSION[ 'cid' ] = $this->userData["email"];
             $_SESSION[ 'userData' ] = $this->userData;
-            //$_SESSION[ 'cid' ] = $this->userData["email"];
             $this->result = array(
                 "error" => 0,
                 "msg" => "登录成功",

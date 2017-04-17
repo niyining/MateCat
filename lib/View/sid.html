@@ -10,7 +10,7 @@
 			//获取用户信息
 	        $.ajax({
 	            type: "GET",
-	            url: "http://localhost:8080/ucenter/api/getuserbysid",
+	            url: "http://mymatecat.com:8080/ucenter/api/getuserbysid",
 	            data: {
 	            	sid: "${sid}"
 	            },
@@ -37,7 +37,8 @@
 		            success: function(data){
 		            	console.log(data);
 		            	if(data.error == 0){
-		            		window.location.href = "/";
+		            		//parent.window.location.reload(true);
+		            		//window.location.href = "/";
 		            	}
 		            }
 		        });
