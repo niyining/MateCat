@@ -558,7 +558,6 @@ UI = {
 			data: ar,
 			success: function(d){
 				data = $.parseJSON(d.data);
-
                 if( typeof d.errors != 'undefined' && d.errors.length ){
                     window.location = '/';
                 }
@@ -589,7 +588,8 @@ UI = {
 			success: function(d){
 				UI.body.removeClass('loading');
 				data = $.parseJSON(d.data);
-
+				//发送给上层窗口
+				window.parent.postMessage(data,'*');
                 if( typeof d.errors != 'undefined' && d.errors.length ){
                     window.location = '/';
                 }

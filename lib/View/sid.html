@@ -35,10 +35,10 @@
 		            data: mdata,
 		            dataType: "json",
 		            success: function(data){
-		            	console.log(data);
 		            	if(data.error == 0){
-		            		//parent.window.location.reload(true);
-		            		//window.location.href = "/";
+		            		//登录成功：发送给上层窗口
+		            		var from = "matecat";
+							window.parent.postMessage(from,'*');
 		            	}
 		            }
 		        });
