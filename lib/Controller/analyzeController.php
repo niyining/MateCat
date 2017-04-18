@@ -56,7 +56,7 @@ class analyzeController extends viewController {
     public function __construct() {
 
         parent::sessionStart();
-        parent::__construct( false );
+        parent::__construct( true );
 
         $filterArgs = array(
                 'pid'      => array( 'filter' => FILTER_SANITIZE_NUMBER_INT ),

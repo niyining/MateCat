@@ -216,7 +216,7 @@ abstract class viewController extends controller {
 
         if ( $mustRedirectToLogin ) {
             //redirect to login page
-            header( 'Location: /login' );
+            header( 'Location: ' . INIT::$ATAMNLOGINURL );
             exit;
         }
 

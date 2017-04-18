@@ -23,8 +23,8 @@ class newProjectController extends viewController {
     private $gdriveAuthUrl;
 
     public function __construct() {
-
-        parent::__construct( false );
+        //需要登录
+        parent::__construct( true );
         parent::makeTemplate( "upload.html" );
 
         $filterArgs = array(

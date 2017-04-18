@@ -12,6 +12,8 @@ class INIT {
             'DB_PASS'
     );
 
+    //上线前更换
+    public static $ATAMNLOGINURL = "http://mymatecat.com:8080/ucenter/login?from=matemat" ;
     public static $ENV ;
     public static $ROOT;
     public static $BASEURL;
