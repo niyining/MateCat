@@ -1850,7 +1850,7 @@ $max_file_size_in_MB = INIT::$MAX_UPLOAD_FILE_SIZE / (1024 * 1024);
               <a class="gototop" href="#top">Go to top</a>
         </div>
         <div class="block block-api">
-            <a name="file-format"><h3 class="method-title">Supported file formats</h3></a>
+            <a name="file-format"><h3 class="method-title">支持的文件格式</h3></a>
 
 
             <table class="tablestats fileformat" width="100%" border="0" cellspacing="0" cellpadding="0">
